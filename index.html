@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codified | ASC Answers on Demand</title>
+  <meta name="description" content="Codified gives accountants fast, plain-English answers to US GAAP and ASC questions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <a class="brand" href="index.html">Codified<span>.</span></a>
+    <div class="nav-links">
+      <a class="hide-sm" href="#what">What we do</a>
+      <a class="hide-sm" href="#numbers">By the numbers</a>
+      <a href="services.html">How it works</a>
+    </div>
+  </nav>
+
+  <!-- HERO: AI-generated video, autoplays on a loop -->
+  <header class="hero">
+    <video autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+      <span class="eyebrow">US GAAP research, simplified</span>
+      <h1>The Codification, <em>answered.</em></h1>
+      <p>Codified is an AI research assistant for accountants. Ask an ASC question in plain English and get a clear answer with the topic reference, in seconds instead of an afternoon.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-gold" href="services.html">See how it works &rarr;</a>
+        <a class="btn btn-ghost" href="#what">Learn more</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- WHAT WE DO -->
+  <section id="what">
+    <div class="wrap">
+      <h2 class="section-title reveal">Built for the close, not the classroom</h2>
+      <p class="section-sub reveal">Staff accountants, controllers, and outsourced teams spend hours digging through the FASB Codification. Codified does the digging so you can get back to the work.</p>
+      <div class="card-grid">
+        <div class="card reveal">
+          <div class="icon">606</div>
+          <h3>Revenue questions</h3>
+          <p>Performance obligations, variable consideration, principal vs. agent. Get the five-step answer for your actual contract.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">842</div>
+          <h3>Lease accounting</h3>
+          <p>Operating or finance? Short-term exemption? Codified walks through classification and the journal entries that follow.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">350</div>
+          <h3>Everything else</h3>
+          <p>Intangibles, accruals, stock comp, debt vs. equity. If it lives in the ASC, you can ask about it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- X-FACTOR: animated stat counters -->
+  <section class="stats" id="numbers">
+    <div class="wrap center">
+      <h2 class="section-title reveal">Codified by the numbers</h2>
+      <p class="section-sub reveal">Why accounting teams keep a tab open on us during month-end.</p>
+      <div class="stat-grid">
+        <div class="stat reveal">
+          <div class="stat-num" data-target="90" data-suffix="+">0</div>
+          <div class="stat-label">ASC topics indexed</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat-num" data-target="24" data-suffix="/7">0</div>
+          <div class="stat-label">Availability, even at 11pm on day 3 of close</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat-num" data-target="10" data-prefix="&lt;" data-suffix="s">0</div>
+          <div class="stat-label">Typical time to an answer</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat-num" data-target="3" data-suffix=" hrs">0</div>
+          <div class="stat-label">Research time saved per tricky question</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <h2>Got a GAAP question right now?</h2>
+        <p>Open the chat in the bottom corner and ask away. Or see the full breakdown of how Codified works.</p>
+        <a class="btn btn-gold" href="services.html">How it works &rarr;</a>
+      </div>
+
+      <div class="xfactor">
+        <strong>X-Factor: Animated stat counters.</strong> As you scroll to "Codified by the numbers," each stat counts up from zero and the page sections fade in, giving the landing page a polished, interactive feel instead of static text.
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">&copy; 2026 Codified. A class project by Kyle Berger. Not a substitute for professional accounting advice.</div>
+  </footer>
+
+  <script>
+    // Solid nav after scrolling past hero
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('solid', window.scrollY > 60));
+
+    // Fade-in on scroll
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // Count-up stats
+    function countUp(el) {
+      const target = +el.dataset.target;
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const duration = 1800;
+      const start = performance.now();
+      function tick(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = prefix + Math.round(target * eased) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+    const statObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); statObs.unobserve(e.target); } });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.stat-num').forEach(el => statObs.observe(el));
+  </script>
+
+  <!-- CHATBOT: Chatling embed -->
+  <script> window.chtlConfig = { chatbotId: "2734689497" } </script>
+  <script async data-id="2734689497" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+</body>
+</html>
