@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
@@ -93,27 +93,25 @@
     <div class="wrap">
       <div class="math-grid">
         <div>
-          <h2>One close, <span class="lime">roughly</span></h2>
-          <p>These are ballpark minutes for six lookups that could easily show up in a single month-end. Your numbers will be different, but if you've worked a close you've probably lost an afternoon this way.</p>
-          <p>The big number is the time you get back if each answer takes about two minutes in the chat instead.</p>
+          <h2>Run your own close <span class="lime">numbers</span></h2>
+          <p>The log on the right starts with my ballpark minutes for six lookups that could easily show up in one month-end. Change any of them, rename them or add the ones you actually ran into last close.</p>
+          <p>It assumes each answer takes about two minutes in the chat. Change that too if you think I'm being generous.</p>
         </div>
-        <div class="console" id="tapeEl">
-          <div class="console-top"><i></i><i></i><i></i><span>minutes.log</span></div>
+        <div class="console" id="calc">
+          <div class="console-top"><i></i><i></i><i></i><span>minutes.log &middot; click any line to edit</span></div>
           <div class="console-body">
-            <div class="row" data-v="55"><span class="d">lease modification</span><span class="n">0</span></div>
-            <div class="row" data-v="40"><span class="d">return rights, 606</span><span class="n">0</span></div>
-            <div class="row" data-v="20"><span class="d">accrued PTO</span><span class="n">0</span></div>
-            <div class="row" data-v="35"><span class="d">cloud software costs</span><span class="n">0</span></div>
-            <div class="row" data-v="45"><span class="d">option forfeiture</span><span class="n">0</span></div>
-            <div class="row" data-v="70"><span class="d">warrant: debt or equity?</span><span class="n">0</span></div>
-            <div class="row sum" data-sum="sub"><span class="d">subtotal</span><span class="n">0</span></div>
-            <div class="row neg" data-v="-12"><span class="d">same six, in the chat</span><span class="n">0</span></div>
-            <div class="row sum big" data-sum="all"><span class="d">minutes back</span><span class="n">0</span></div>
+            <div class="calc-head"><span>lookup</span><span>min</span></div>
+            <div id="rows"></div>
+            <button type="button" class="add" id="addRow">+ add a lookup</button>
+            <div class="row sum on"><span class="d">subtotal</span><span class="n" id="sub">0</span></div>
+            <div class="row neg on"><span class="d">same <span id="cnt">0</span>, at <input class="mini" id="per" type="number" min="0" max="60" value="2" aria-label="Minutes per question in the chat"> min each</span><span class="n" id="chat">0</span></div>
+            <div class="row sum big on"><span class="d">minutes back</span><span class="n" id="back">0</span></div>
+            <div class="row yr on"><span class="d">over 12 closes</span><span class="n"><span id="yr">0</span> hrs</span></div>
           </div>
         </div>
       </div>
 
-      <p class="xnote"><b>About the extra feature:</b> the minutes log prints one line at a time once you scroll to it, and the subtotal and final number are added up live, like a 10-key tape. I wanted the one moving number on the page to come from an accountant's desk.</p>
+      <p class="xnote"><b>About the extra feature:</b> the minutes log is a working calculator. Edit the lookups, change the minutes or add your own, and it re-adds your time back live, including a yearly total across 12 closes. It starts from my ballpark numbers.</p>
     </div>
   </section>
 
@@ -124,42 +122,72 @@
 
   <script>
     (function () {
-      var box = document.getElementById('tapeEl');
-      var rows = Array.prototype.slice.call(box.querySelectorAll('.row'));
-      var started = false;
+      var seed = [
+        ['lease modification', 55], ['return rights, 606', 40], ['accrued PTO', 20],
+        ['cloud software costs', 35], ['option forfeiture', 45], ['warrant: debt or equity?', 70]
+      ];
+      var rowsEl = document.getElementById('rows');
+      var per = document.getElementById('per');
+      var out = { sub: document.getElementById('sub'), chat: document.getElementById('chat'),
+                  back: document.getElementById('back'), yr: document.getElementById('yr'), cnt: document.getElementById('cnt') };
+      var shown = { sub: 0, chat: 0, back: 0, yr: 0 };
+      var live = false;
 
-      function animateNum(el, to, ms) {
-        var t0 = null;
+      function tween(key, to, decimals) {
+        var from = shown[key], t0 = null, el = out[key];
+        shown[key] = to;
         function step(t) {
           if (!t0) t0 = t;
-          var p = Math.min((t - t0) / ms, 1);
-          el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+          var p = Math.min((t - t0) / 500, 1), e = 1 - Math.pow(1 - p, 3);
+          el.textContent = (from + (to - from) * e).toFixed(decimals || 0);
           if (p < 1) requestAnimationFrame(step);
         }
         requestAnimationFrame(step);
       }
 
-      function run() {
-        if (started) return;
-        started = true;
-        var sub = 0, all = 0;
-        rows.forEach(function (row, i) {
-          setTimeout(function () {
-            var v;
-            if (row.dataset.sum === 'sub') v = sub;
-            else if (row.dataset.sum === 'all') v = all;
-            else { v = +row.dataset.v; if (v > 0) sub += v; all += v; }
-            row.classList.add('on');
-            animateNum(row.querySelector('.n'), v, row.dataset.sum === 'all' ? 1200 : 400);
-          }, i * 380);
-        });
+      function recalc() {
+        if (!live) return;
+        var mins = [].map.call(rowsEl.querySelectorAll('.m'), function (i) { return Math.max(0, +i.value || 0); });
+        var sub = mins.reduce(function (a, b) { return a + b; }, 0);
+        var chat = mins.length * Math.max(0, +per.value || 0);
+        var back = sub - chat;
+        out.cnt.textContent = mins.length;
+        tween('sub', sub); tween('chat', -chat); tween('back', back); tween('yr', back * 12 / 60, 1);
+        out.back.parentNode.classList.toggle('bad', back < 0);
       }
 
+      function addRow(label, min, focus) {
+        var r = document.createElement('div');
+        r.className = 'row edit';
+        r.innerHTML = '<input class="lbl" type="text" maxlength="32" aria-label="Lookup name">' +
+                      '<input class="m" type="number" min="0" max="999" aria-label="Minutes">' +
+                      '<button type="button" class="x" aria-label="Remove lookup">&times;</button>';
+        r.querySelector('.lbl').value = label;
+        r.querySelector('.m').value = min;
+        r.querySelector('.x').onclick = function () { r.remove(); recalc(); };
+        rowsEl.appendChild(r);
+        if (focus) { r.classList.add('on'); r.querySelector('.lbl').select(); }
+        return r;
+      }
+
+      seed.forEach(function (s) { addRow(s[0], s[1]); });
+      rowsEl.addEventListener('input', recalc);
+      per.addEventListener('input', recalc);
+      document.getElementById('addRow').onclick = function () {
+        addRow('new lookup', 30, true); recalc();
+      };
+
+      function start() {
+        var rows = rowsEl.querySelectorAll('.row');
+        [].forEach.call(rows, function (r, i) { setTimeout(function () { r.classList.add('on'); }, i * 160); });
+        setTimeout(function () { live = true; recalc(); }, rows.length * 160);
+      }
+      var box = document.getElementById('calc');
       if ('IntersectionObserver' in window) {
         new IntersectionObserver(function (entries, obs) {
-          if (entries[0].isIntersecting) { run(); obs.disconnect(); }
+          if (entries[0].isIntersecting) { start(); obs.disconnect(); }
         }, { threshold: 0.25 }).observe(box);
-      } else { run(); }
+      } else { start(); }
     })();
   </script>
 
