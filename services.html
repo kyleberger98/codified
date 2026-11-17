@@ -3,35 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>how it works | codified</title>
+  <title>How it works | Codified</title>
   <meta name="description" content="How the Codified chatbot answers US GAAP questions, with a worked example.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Condensed:wght@600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=2">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
-  <div class="bar">
-    <a class="mark" href="index.html">codified<b>.</b></a>
-    <nav>
-      <a href="#example">example</a>
-      <a href="#covers">topics</a>
-      <a href="index.html">&larr; home</a>
-    </nav>
-  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="gTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3ffb8"/><stop offset="1" stop-color="#c6ff3d"/></linearGradient>
+      <linearGradient id="gLeft" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2ee6a0"/><stop offset="1" stop-color="#0b5a3e"/></linearGradient>
+      <linearGradient id="gRight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b8f54a"/><stop offset="1" stop-color="#17a77a"/></linearGradient>
+      <g id="cube">
+        <polygon points="0,0 52,30 0,60 -52,30" fill="url(#gTop)"/>
+        <polygon points="-52,30 0,60 0,120 -52,90" fill="url(#gLeft)"/>
+        <polygon points="0,60 52,30 52,90 0,120" fill="url(#gRight)"/>
+      </g>
+    </defs>
+  </svg>
 
-  <header class="pagehead">
-    <div class="wrap">
-      <span class="label">how it works</span>
-      <h1>Type the question, get pointed to the right topic.</h1>
+  <nav class="nav">
+    <a class="logo" href="index.html"><i></i>Codified</a>
+    <div class="nav-links">
+      <a class="hide-sm" href="#example">Example</a>
+      <a class="hide-sm" href="#topics">Topics</a>
+      <a class="btn btn-line btn-sm" href="index.html">&larr; Home</a>
+    </div>
+  </nav>
+
+  <header class="p2-hero">
+    <div class="wrap" style="position:relative">
+      <svg class="blocks" viewBox="60 50 400 380" aria-hidden="true">
+        <use href="#cube" x="230" y="180"/><use href="#cube" x="230" y="120"/>
+        <use href="#cube" x="282" y="210"/><use href="#cube" x="178" y="210"/><use href="#cube" x="282" y="150"/>
+        <use href="#cube" x="334" y="240"/><use href="#cube" x="230" y="240"/><use href="#cube" x="126" y="240"/>
+        <use href="#cube" x="282" y="270"/><use href="#cube" x="178" y="270"/><use href="#cube" x="230" y="300"/>
+      </svg>
+      <h1>Type the question.<br><span class="lime">Get the topic.</span></h1>
       <p>The bot runs on Chatling and was trained on a set of public US GAAP websites I picked out. When you ask something it pulls from those pages, names the ASC topic it thinks applies and walks through it. If the question needs an entry, it'll usually give you one.</p>
     </div>
   </header>
 
-  <section class="block">
-    <div class="wrap split">
-      <div><span class="label">01</span><h2>The problem</h2></div>
+  <section class="sec">
+    <div class="wrap sec-grid">
+      <div><div class="num">01</div><h2>The problem</h2></div>
       <div class="prose">
         <p>The Codification is organized by topic number, which is great if you already know the topic number. Most of the time you don't. You know a client did something odd and you need to figure out what part of GAAP even covers it, and Google mostly gives you Big 4 PDFs from 2015 or blog posts trying to sell you software.</p>
         <p>On a small outsourced team there usually isn't a technical accounting person to walk over and ask. So you dig, and the digging comes out of the time you were supposed to spend on recs and the reporting package.</p>
@@ -39,54 +57,49 @@
     </div>
   </section>
 
-  <section class="block" id="example">
-    <div class="wrap split">
-      <div><span class="label">02</span><h2>A real example</h2><p style="color:var(--pencil);font-size:.92rem;margin-top:10px">This is roughly what a back and forth looks like. Numbers are made up.</p></div>
-      <div class="workpaper">
-        <div class="wp-top"><span>W/P 606-1</span><span>prepared by: codified</span></div>
-        <div class="wp-body">
-          <p class="wp-q">"We sold 100 units at $100 each. Customers can return them within 30 days and historically about 10% come back. Cost is $60 a unit. What do I book?"</p>
-          <div class="wp-a">
-            <p><span class="tick">&#10003;</span> This is a sale with a right of return, which falls under ASC 606 as variable consideration (606-10-55-22 through 55-29).</p>
-            <p>You only recognize revenue for the units you don't expect to come back, so 90 units, or $9,000. The other $1,000 goes to a refund liability. On the cost side, you set up an asset for the inventory you expect to get back instead of expensing all of it.</p>
-            <table class="je">
-              <tr><th>Account</th><th>Dr</th><th>Cr</th></tr>
-              <tr><td>Cash / AR</td><td class="n">10,000</td><td></td></tr>
-              <tr><td class="cr">Revenue</td><td></td><td class="n">9,000</td></tr>
-              <tr><td class="cr">Refund liability</td><td></td><td class="n">1,000</td></tr>
-              <tr><td>Cost of goods sold</td><td class="n">5,400</td><td></td></tr>
-              <tr><td>Asset for expected returns</td><td class="n">600</td><td></td></tr>
-              <tr><td class="cr">Inventory</td><td></td><td class="n">6,000</td></tr>
-            </table>
-            <p>Revisit the 10% estimate each reporting period and true up both the liability and the asset if it changes.</p>
-          </div>
+  <section class="sec" id="example">
+    <div class="wrap sec-grid">
+      <div><div class="num">02</div><h2>A real example</h2><p class="side">This is roughly what a back and forth looks like. Numbers are made up.</p></div>
+      <div class="chat">
+        <div class="msg user">We sold 100 units at $100 each. Customers can return them within 30 days and historically about 10% come back. Cost is $60 a unit. What do I book?</div>
+        <div class="msg bot">
+          <p>This is a sale with a right of return, which ASC 606 treats as variable consideration. <span class="cite">606-10-55-22 to 55-29</span></p>
+          <p>You only recognize revenue for the units you don't expect to come back, so 90 units, or $9,000. The other $1,000 goes to a refund liability. On the cost side, set up an asset for the inventory you expect to get back instead of expensing all of it.</p>
+          <table class="je">
+            <tr><th>Account</th><th>Dr</th><th>Cr</th></tr>
+            <tr><td>Cash / AR</td><td class="n">10,000</td><td></td></tr>
+            <tr><td class="cr">Revenue</td><td></td><td class="n">9,000</td></tr>
+            <tr><td class="cr">Refund liability</td><td></td><td class="n">1,000</td></tr>
+            <tr><td>Cost of goods sold</td><td class="n">5,400</td><td></td></tr>
+            <tr><td>Asset for expected returns</td><td class="n">600</td><td></td></tr>
+            <tr><td class="cr">Inventory</td><td></td><td class="n">6,000</td></tr>
+          </table>
+          <p>Revisit the 10% estimate each reporting period and true up both the liability and the asset if it changes.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="block" id="covers">
-    <div class="wrap split">
-      <div><span class="label">03</span><h2>What it knows about</h2></div>
-      <div>
-        <div class="topics">
-          <div><code>606</code>Revenue from contracts</div>
-          <div><code>842</code>Leases</div>
-          <div><code>718</code>Stock compensation</div>
-          <div><code>350</code>Goodwill, intangibles, software</div>
-          <div><code>450</code>Contingencies</div>
-          <div><code>740</code>Income taxes</div>
-          <div><code>805</code>Business combinations</div>
-          <div><code>480</code>Debt vs. equity</div>
-        </div>
-        <p style="margin-top:16px;color:var(--pencil);font-size:.95rem">It'll take a swing at other topics too, the answers are just less reliable outside of what it was trained on.</p>
+  <section class="sec" id="topics">
+    <div class="wrap">
+      <div class="num">03</div><h2 style="margin-bottom:28px">What it knows about</h2>
+      <div class="topics">
+        <div class="topic"><code>606</code><span>Revenue from contracts</span></div>
+        <div class="topic"><code>842</code><span>Leases</span></div>
+        <div class="topic"><code>718</code><span>Stock compensation</span></div>
+        <div class="topic"><code>350</code><span>Goodwill, intangibles, software</span></div>
+        <div class="topic"><code>450</code><span>Contingencies</span></div>
+        <div class="topic"><code>740</code><span>Income taxes</span></div>
+        <div class="topic"><code>805</code><span>Business combinations</span></div>
+        <div class="topic"><code>480</code><span>Debt vs. equity</span></div>
       </div>
+      <p class="note">It'll take a swing at other topics too, the answers are just less reliable outside of what it was trained on.</p>
     </div>
   </section>
 
-  <section class="block">
-    <div class="wrap split">
-      <div><span class="label">04</span><h2>What it won't do</h2></div>
+  <section class="sec">
+    <div class="wrap sec-grid">
+      <div><div class="num">04</div><h2>What it won't do</h2></div>
       <div class="prose">
         <p>It isn't a CPA and it doesn't know your client. It can be wrong, especially on newer ASUs or anything that turns on a judgment call. Treat it like a smart first-year who read the standard last night: good for getting pointed in the right direction, and you still review it before anything gets signed off.</p>
         <p>It also only covers US GAAP right now. No IFRS, no tax code.</p>
@@ -94,19 +107,19 @@
     </div>
   </section>
 
-  <section class="block">
-    <div class="wrap split">
-      <div><span class="label">05</span><h2>Where it's headed</h2></div>
+  <section class="sec">
+    <div class="wrap sec-grid">
+      <div><div class="num">05</div><h2>Where it's headed</h2></div>
       <div class="prose">
         <p>For now it's free and it lives in the chat window on this site. If it keeps being useful, the plan is a paid version for small firms where each client gets its own folder of past questions, so the next person who picks up that client can see what was already researched and why.</p>
-        <p style="margin-top:22px"><a class="btn plain" href="index.html">&larr; Back to the home page</a></p>
+        <p style="margin-top:26px"><a class="btn btn-lime" href="index.html">&larr; Back to home</a></p>
       </div>
     </div>
   </section>
 
   <footer>
-    <span>codified, a class project by Kyle Berger</span>
-    <span>not affiliated with FASB</span>
+    <span>Codified, a class project by Kyle Berger</span>
+    <span>Not affiliated with FASB</span>
   </footer>
 
   <!-- chatbot -->

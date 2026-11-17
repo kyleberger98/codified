@@ -3,94 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>codified</title>
+  <title>Codified</title>
   <meta name="description" content="A chatbot that answers US GAAP questions and points you to the ASC topic.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Condensed:wght@600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=2">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
-  <div class="bar">
-    <a class="mark" href="index.html">codified<b>.</b></a>
-    <nav>
-      <a href="#why">why</a>
-      <a href="#tape">the math</a>
-      <a href="services.html">how it works</a>
-    </nav>
-  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="gTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3ffb8"/><stop offset="1" stop-color="#c6ff3d"/></linearGradient>
+      <linearGradient id="gLeft" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2ee6a0"/><stop offset="1" stop-color="#0b5a3e"/></linearGradient>
+      <linearGradient id="gRight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b8f54a"/><stop offset="1" stop-color="#17a77a"/></linearGradient>
+      <g id="cube">
+        <polygon points="0,0 52,30 0,60 -52,30" fill="url(#gTop)"/>
+        <polygon points="-52,30 0,60 0,120 -52,90" fill="url(#gLeft)"/>
+        <polygon points="0,60 52,30 52,90 0,120" fill="url(#gRight)"/>
+      </g>
+    </defs>
+  </svg>
+
+  <nav class="nav">
+    <a class="logo" href="index.html"><i></i>Codified</a>
+    <div class="nav-links">
+      <a class="hide-sm" href="#why">Why</a>
+      <a class="hide-sm" href="#ask">Examples</a>
+      <a class="hide-sm" href="#math">The math</a>
+      <a class="btn btn-lime btn-sm" href="services.html">How it works</a>
+    </div>
+  </nav>
 
   <header class="hero">
     <video autoplay muted loop playsinline preload="auto" aria-hidden="true">
       <source src="hero.mp4" type="video/mp4">
     </video>
-    <div class="hero-text">
-      <h1>Ask GAAP a question in plain English.</h1>
-      <p>Codified is a chatbot trained on US GAAP sources. Type what you'd ask the senior on your team and it tells you which ASC topic applies and what it actually says. The chat is in the bottom right corner if you want to try it.</p>
-      <a class="btn" href="services.html">How it works &rarr;</a>
+    <div class="hero-inner">
+      <h1 class="mega"><span>Ask GAAP</span><span>anything</span></h1>
+      <div class="hero-foot">
+        <div>
+          <div class="tag">US GAAP chatbot / ASC topics</div>
+          <p>Type what you'd ask the senior on your team. Codified tells you which ASC topic applies and what it actually says. The chat is in the bottom right corner.</p>
+        </div>
+        <div class="hero-ctas">
+          <a class="btn btn-lime" href="services.html">How it works &rarr;</a>
+          <a class="btn btn-line" href="#ask">See examples</a>
+        </div>
+      </div>
     </div>
   </header>
 
-  <section class="block" id="why">
-    <div class="wrap split">
-      <div><span class="label">01 / why</span><h2>Why I'm building this</h2></div>
-      <div class="prose">
+  <section class="glow" id="why">
+    <div class="wrap">
+      <div class="kicker">Codified</div>
+      <h2>The whole Codification, one chat window away.</h2>
+      <div class="glowword" aria-hidden="true">ASC</div>
+      <div class="story">
         <p>I work on an outsourced accounting team, so in a given week I might be closing books for a biotech, a construction company and a couple others. Something always comes up that I haven't dealt with in a while, a lease gets modified or a client signs a weird revenue contract, and I end up with fifteen tabs of the Codification open looking for the one paragraph that matters.</p>
         <p>Codified is my fix for that. You ask it the way you'd ask a coworker and it points you to the right topic and explains it in normal words. You should still check the cite before it goes in a workpaper, but it gets you to the right page a lot faster than searching on your own.</p>
       </div>
     </div>
   </section>
 
-  <section class="block">
-    <div class="wrap split">
-      <div><span class="label">02 / examples</span><h2>Stuff people actually ask it</h2></div>
-      <ul class="qlist">
-        <li><code>ASC 606</code><span>Customer can return product within 30 days. Do I book all the revenue now?</span></li>
-        <li><code>ASC 842</code><span>Landlord gave us 3 free months up front. How does that hit the lease liability?</span></li>
-        <li><code>350-40</code><span>Can we capitalize the implementation fees on our new cloud ERP?</span></li>
-        <li><code>ASC 450</code><span>Client is getting sued. Do we accrue something or just disclose it?</span></li>
-        <li><code>ASC 718</code><span>Employee quit before their options vested. What happens to the expense already booked?</span></li>
-      </ul>
+  <section class="examples" id="ask">
+    <div class="wrap ex-grid">
+      <div>
+        <h2>Ask <span class="lime">anything</span><br>in the Codification</h2>
+        <p class="sub">You don't need the topic number. Describe what the client did and it works backward to the guidance.</p>
+        <svg class="blocks" viewBox="60 50 400 380" aria-hidden="true">
+          <use href="#cube" x="230" y="180"/><use href="#cube" x="230" y="120"/><use href="#cube" x="230" y="60"/>
+          <use href="#cube" x="282" y="210"/><use href="#cube" x="178" y="210"/><use href="#cube" x="282" y="150"/>
+          <use href="#cube" x="178" y="150"/><use href="#cube" x="334" y="240"/><use href="#cube" x="230" y="240"/>
+          <use href="#cube" x="126" y="240"/><use href="#cube" x="282" y="270"/><use href="#cube" x="178" y="270"/>
+          <use href="#cube" x="386" y="270"/><use href="#cube" x="230" y="300"/><use href="#cube" x="334" y="300"/>
+        </svg>
+      </div>
+      <div class="qs">
+        <div class="q"><code>ASC 606</code><span>Customer can return product within 30 days. Do I book all the revenue now?</span></div>
+        <div class="q"><code>ASC 842</code><span>Landlord gave us 3 free months up front. How does that hit the lease liability?</span></div>
+        <div class="q"><code>350-40</code><span>Can we capitalize the implementation fees on our new cloud ERP?</span></div>
+        <div class="q"><code>ASC 450</code><span>Client is getting sued. Do we accrue something or just disclose it?</span></div>
+        <div class="q"><code>ASC 718</code><span>Employee quit before their options vested. What happens to the expense already booked?</span></div>
+      </div>
     </div>
   </section>
 
-  <section class="block tape-zone" id="tape">
+  <section class="math" id="math">
     <div class="wrap">
-      <div class="tape-layout">
-        <div class="prose">
-          <span class="label">03 / the math</span>
-          <h2>One close, roughly</h2>
+      <div class="math-grid">
+        <div>
+          <h2>One close, <span class="lime">roughly</span></h2>
           <p>These are ballpark minutes for six lookups that could easily show up in a single month-end. Your numbers will be different, but if you've worked a close you've probably lost an afternoon this way.</p>
-          <p>The bottom line is the time you get back if each answer takes about two minutes in the chat instead.</p>
+          <p>The big number is the time you get back if each answer takes about two minutes in the chat instead.</p>
         </div>
-        <div class="tape" id="tapeEl" aria-label="Adding machine tape of research minutes">
-          <div class="tape-head">MINUTES</div>
-          <div class="line" data-v="55"><span class="desc">lease modification</span><span>0</span></div>
-          <div class="line" data-v="40"><span class="desc">return rights, 606</span><span>0</span></div>
-          <div class="line" data-v="20"><span class="desc">accrued PTO</span><span>0</span></div>
-          <div class="line" data-v="35"><span class="desc">cloud software costs</span><span>0</span></div>
-          <div class="line" data-v="45"><span class="desc">option forfeiture</span><span>0</span></div>
-          <div class="line" data-v="70"><span class="desc">warrant: debt or equity?</span><span>0</span></div>
-          <div class="line total" data-sum="sub"><span class="desc">subtotal</span><span>0</span></div>
-          <div class="line neg" data-v="-12"><span class="desc">same six, in the chat</span><span>0</span></div>
-          <div class="line total" data-sum="all"><span class="desc">time back</span><span>0</span></div>
+        <div class="console" id="tapeEl">
+          <div class="console-top"><i></i><i></i><i></i><span>minutes.log</span></div>
+          <div class="console-body">
+            <div class="row" data-v="55"><span class="d">lease modification</span><span class="n">0</span></div>
+            <div class="row" data-v="40"><span class="d">return rights, 606</span><span class="n">0</span></div>
+            <div class="row" data-v="20"><span class="d">accrued PTO</span><span class="n">0</span></div>
+            <div class="row" data-v="35"><span class="d">cloud software costs</span><span class="n">0</span></div>
+            <div class="row" data-v="45"><span class="d">option forfeiture</span><span class="n">0</span></div>
+            <div class="row" data-v="70"><span class="d">warrant: debt or equity?</span><span class="n">0</span></div>
+            <div class="row sum" data-sum="sub"><span class="d">subtotal</span><span class="n">0</span></div>
+            <div class="row neg" data-v="-12"><span class="d">same six, in the chat</span><span class="n">0</span></div>
+            <div class="row sum big" data-sum="all"><span class="d">minutes back</span><span class="n">0</span></div>
+          </div>
         </div>
       </div>
 
-      <p class="xnote">About the extra feature: the adding machine tape prints itself one line at a time once you scroll to it, and the subtotal and final number are added up live. I wanted the one moving part on the page to look like it came off an accountant's desk.</p>
+      <p class="xnote"><b>About the extra feature:</b> the minutes log prints one line at a time once you scroll to it, and the subtotal and final number are added up live, like a 10-key tape. I wanted the one moving number on the page to come from an accountant's desk.</p>
     </div>
   </section>
 
   <footer>
-    <span>codified, a class project by Kyle Berger</span>
-    <span>not accounting advice, check the cite</span>
+    <span>Codified, a class project by Kyle Berger</span>
+    <span>Not accounting advice. Check the cite.</span>
   </footer>
 
   <script>
     (function () {
-      var tape = document.getElementById('tapeEl');
-      var lines = Array.prototype.slice.call(tape.querySelectorAll('.line'));
+      var box = document.getElementById('tapeEl');
+      var rows = Array.prototype.slice.call(box.querySelectorAll('.row'));
       var started = false;
 
       function animateNum(el, to, ms) {
@@ -98,7 +133,7 @@
         function step(t) {
           if (!t0) t0 = t;
           var p = Math.min((t - t0) / ms, 1);
-          el.textContent = Math.round(to * p);
+          el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
           if (p < 1) requestAnimationFrame(step);
         }
         requestAnimationFrame(step);
@@ -108,30 +143,23 @@
         if (started) return;
         started = true;
         var sub = 0, all = 0;
-        lines.forEach(function (line, i) {
+        rows.forEach(function (row, i) {
           setTimeout(function () {
-            var out = line.lastElementChild;
             var v;
-            if (line.dataset.sum === 'sub') v = sub;
-            else if (line.dataset.sum === 'all') v = all;
-            else {
-              v = +line.dataset.v;
-              if (v > 0) sub += v;
-              all += v;
-            }
-            line.classList.add('on');
-            animateNum(out, v, 380);
-          }, i * 420);
+            if (row.dataset.sum === 'sub') v = sub;
+            else if (row.dataset.sum === 'all') v = all;
+            else { v = +row.dataset.v; if (v > 0) sub += v; all += v; }
+            row.classList.add('on');
+            animateNum(row.querySelector('.n'), v, row.dataset.sum === 'all' ? 1200 : 400);
+          }, i * 380);
         });
       }
 
       if ('IntersectionObserver' in window) {
         new IntersectionObserver(function (entries, obs) {
           if (entries[0].isIntersecting) { run(); obs.disconnect(); }
-        }, { threshold: 0.25 }).observe(tape);
-      } else {
-        run();
-      }
+        }, { threshold: 0.25 }).observe(box);
+      } else { run(); }
     })();
   </script>
 
