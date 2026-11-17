@@ -3,143 +3,139 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Codified | ASC Answers on Demand</title>
-  <meta name="description" content="Codified gives accountants fast, plain-English answers to US GAAP and ASC questions.">
+  <title>codified</title>
+  <meta name="description" content="A chatbot that answers US GAAP questions and points you to the ASC topic.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Condensed:wght@600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <nav class="nav" id="nav">
-    <a class="brand" href="index.html">Codified<span>.</span></a>
-    <div class="nav-links">
-      <a class="hide-sm" href="#what">What we do</a>
-      <a class="hide-sm" href="#numbers">By the numbers</a>
-      <a href="services.html">How it works</a>
-    </div>
-  </nav>
+  <div class="bar">
+    <a class="mark" href="index.html">codified<b>.</b></a>
+    <nav>
+      <a href="#why">why</a>
+      <a href="#tape">the math</a>
+      <a href="services.html">how it works</a>
+    </nav>
+  </div>
 
-  <!-- HERO: AI-generated video, autoplays on a loop -->
   <header class="hero">
     <video autoplay muted loop playsinline preload="auto" aria-hidden="true">
       <source src="hero.mp4" type="video/mp4">
     </video>
-    <div class="hero-content">
-      <span class="eyebrow">US GAAP research, simplified</span>
-      <h1>The Codification, <em>answered.</em></h1>
-      <p>Codified is an AI research assistant for accountants. Ask an ASC question in plain English and get a clear answer with the topic reference, in seconds instead of an afternoon.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-gold" href="services.html">See how it works &rarr;</a>
-        <a class="btn btn-ghost" href="#what">Learn more</a>
-      </div>
+    <div class="hero-text">
+      <h1>Ask GAAP a question in plain English.</h1>
+      <p>Codified is a chatbot trained on US GAAP sources. Type what you'd ask the senior on your team and it tells you which ASC topic applies and what it actually says. The chat is in the bottom right corner if you want to try it.</p>
+      <a class="btn" href="services.html">How it works &rarr;</a>
     </div>
   </header>
 
-  <!-- WHAT WE DO -->
-  <section id="what">
-    <div class="wrap">
-      <h2 class="section-title reveal">Built for the close, not the classroom</h2>
-      <p class="section-sub reveal">Staff accountants, controllers, and outsourced teams spend hours digging through the FASB Codification. Codified does the digging so you can get back to the work.</p>
-      <div class="card-grid">
-        <div class="card reveal">
-          <div class="icon">606</div>
-          <h3>Revenue questions</h3>
-          <p>Performance obligations, variable consideration, principal vs. agent. Get the five-step answer for your actual contract.</p>
-        </div>
-        <div class="card reveal">
-          <div class="icon">842</div>
-          <h3>Lease accounting</h3>
-          <p>Operating or finance? Short-term exemption? Codified walks through classification and the journal entries that follow.</p>
-        </div>
-        <div class="card reveal">
-          <div class="icon">350</div>
-          <h3>Everything else</h3>
-          <p>Intangibles, accruals, stock comp, debt vs. equity. If it lives in the ASC, you can ask about it.</p>
-        </div>
+  <section class="block" id="why">
+    <div class="wrap split">
+      <div><span class="label">01 / why</span><h2>Why I'm building this</h2></div>
+      <div class="prose">
+        <p>I work on an outsourced accounting team, so in a given week I might be closing books for a biotech, a construction company and a couple others. Something always comes up that I haven't dealt with in a while, a lease gets modified or a client signs a weird revenue contract, and I end up with fifteen tabs of the Codification open looking for the one paragraph that matters.</p>
+        <p>Codified is my fix for that. You ask it the way you'd ask a coworker and it points you to the right topic and explains it in normal words. You should still check the cite before it goes in a workpaper, but it gets you to the right page a lot faster than searching on your own.</p>
       </div>
     </div>
   </section>
 
-  <!-- X-FACTOR: animated stat counters -->
-  <section class="stats" id="numbers">
-    <div class="wrap center">
-      <h2 class="section-title reveal">Codified by the numbers</h2>
-      <p class="section-sub reveal">Why accounting teams keep a tab open on us during month-end.</p>
-      <div class="stat-grid">
-        <div class="stat reveal">
-          <div class="stat-num" data-target="90" data-suffix="+">0</div>
-          <div class="stat-label">ASC topics indexed</div>
-        </div>
-        <div class="stat reveal">
-          <div class="stat-num" data-target="24" data-suffix="/7">0</div>
-          <div class="stat-label">Availability, even at 11pm on day 3 of close</div>
-        </div>
-        <div class="stat reveal">
-          <div class="stat-num" data-target="10" data-prefix="&lt;" data-suffix="s">0</div>
-          <div class="stat-label">Typical time to an answer</div>
-        </div>
-        <div class="stat reveal">
-          <div class="stat-num" data-target="3" data-suffix=" hrs">0</div>
-          <div class="stat-label">Research time saved per tricky question</div>
-        </div>
-      </div>
+  <section class="block">
+    <div class="wrap split">
+      <div><span class="label">02 / examples</span><h2>Stuff people actually ask it</h2></div>
+      <ul class="qlist">
+        <li><code>ASC 606</code><span>Customer can return product within 30 days. Do I book all the revenue now?</span></li>
+        <li><code>ASC 842</code><span>Landlord gave us 3 free months up front. How does that hit the lease liability?</span></li>
+        <li><code>350-40</code><span>Can we capitalize the implementation fees on our new cloud ERP?</span></li>
+        <li><code>ASC 450</code><span>Client is getting sued. Do we accrue something or just disclose it?</span></li>
+        <li><code>ASC 718</code><span>Employee quit before their options vested. What happens to the expense already booked?</span></li>
+      </ul>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section>
+  <section class="block tape-zone" id="tape">
     <div class="wrap">
-      <div class="cta-band reveal">
-        <h2>Got a GAAP question right now?</h2>
-        <p>Open the chat in the bottom corner and ask away. Or see the full breakdown of how Codified works.</p>
-        <a class="btn btn-gold" href="services.html">How it works &rarr;</a>
+      <div class="tape-layout">
+        <div class="prose">
+          <span class="label">03 / the math</span>
+          <h2>One close, roughly</h2>
+          <p>These are ballpark minutes for six lookups that could easily show up in a single month-end. Your numbers will be different, but if you've worked a close you've probably lost an afternoon this way.</p>
+          <p>The bottom line is the time you get back if each answer takes about two minutes in the chat instead.</p>
+        </div>
+        <div class="tape" id="tapeEl" aria-label="Adding machine tape of research minutes">
+          <div class="tape-head">MINUTES</div>
+          <div class="line" data-v="55"><span class="desc">lease modification</span><span>0</span></div>
+          <div class="line" data-v="40"><span class="desc">return rights, 606</span><span>0</span></div>
+          <div class="line" data-v="20"><span class="desc">accrued PTO</span><span>0</span></div>
+          <div class="line" data-v="35"><span class="desc">cloud software costs</span><span>0</span></div>
+          <div class="line" data-v="45"><span class="desc">option forfeiture</span><span>0</span></div>
+          <div class="line" data-v="70"><span class="desc">warrant: debt or equity?</span><span>0</span></div>
+          <div class="line total" data-sum="sub"><span class="desc">subtotal</span><span>0</span></div>
+          <div class="line neg" data-v="-12"><span class="desc">same six, in the chat</span><span>0</span></div>
+          <div class="line total" data-sum="all"><span class="desc">time back</span><span>0</span></div>
+        </div>
       </div>
 
-      <div class="xfactor">
-        <strong>X-Factor: Animated stat counters.</strong> As you scroll to "Codified by the numbers," each stat counts up from zero and the page sections fade in, giving the landing page a polished, interactive feel instead of static text.
-      </div>
+      <p class="xnote">About the extra feature: the adding machine tape prints itself one line at a time once you scroll to it, and the subtotal and final number are added up live. I wanted the one moving part on the page to look like it came off an accountant's desk.</p>
     </div>
   </section>
 
   <footer>
-    <div class="wrap">&copy; 2026 Codified. A class project by Kyle Berger. Not a substitute for professional accounting advice.</div>
+    <span>codified, a class project by Kyle Berger</span>
+    <span>not accounting advice, check the cite</span>
   </footer>
 
   <script>
-    // Solid nav after scrolling past hero
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => nav.classList.toggle('solid', window.scrollY > 60));
+    (function () {
+      var tape = document.getElementById('tapeEl');
+      var lines = Array.prototype.slice.call(tape.querySelectorAll('.line'));
+      var started = false;
 
-    // Fade-in on scroll
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); } });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-    // Count-up stats
-    function countUp(el) {
-      const target = +el.dataset.target;
-      const prefix = el.dataset.prefix || '';
-      const suffix = el.dataset.suffix || '';
-      const duration = 1800;
-      const start = performance.now();
-      function tick(now) {
-        const p = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = prefix + Math.round(target * eased) + suffix;
-        if (p < 1) requestAnimationFrame(tick);
+      function animateNum(el, to, ms) {
+        var t0 = null;
+        function step(t) {
+          if (!t0) t0 = t;
+          var p = Math.min((t - t0) / ms, 1);
+          el.textContent = Math.round(to * p);
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
       }
-      requestAnimationFrame(tick);
-    }
-    const statObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); statObs.unobserve(e.target); } });
-    }, { threshold: 0.6 });
-    document.querySelectorAll('.stat-num').forEach(el => statObs.observe(el));
+
+      function run() {
+        if (started) return;
+        started = true;
+        var sub = 0, all = 0;
+        lines.forEach(function (line, i) {
+          setTimeout(function () {
+            var out = line.lastElementChild;
+            var v;
+            if (line.dataset.sum === 'sub') v = sub;
+            else if (line.dataset.sum === 'all') v = all;
+            else {
+              v = +line.dataset.v;
+              if (v > 0) sub += v;
+              all += v;
+            }
+            line.classList.add('on');
+            animateNum(out, v, 380);
+          }, i * 420);
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries, obs) {
+          if (entries[0].isIntersecting) { run(); obs.disconnect(); }
+        }, { threshold: 0.25 }).observe(tape);
+      } else {
+        run();
+      }
+    })();
   </script>
 
-  <!-- CHATBOT: Chatling embed -->
+  <!-- chatbot -->
   <script> window.chtlConfig = { chatbotId: "2734689497" } </script>
   <script async data-id="2734689497" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
 </body>
