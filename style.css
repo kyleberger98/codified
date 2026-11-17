@@ -133,7 +133,7 @@ a { color: inherit; }
 .p2-hero { padding: 150px 0 90px; position: relative; overflow: hidden; }
 .p2-hero h1 { font-weight: 900; font-stretch: 125%; text-transform: uppercase; font-size: clamp(2.8rem, 8vw, 7rem); line-height: .9; letter-spacing: -.03em; max-width: 1000px; }
 .p2-hero p { color: var(--dim); max-width: 600px; margin-top: 26px; font-size: 1.08rem; }
-.p2-hero .blocks { position: absolute; right: -40px; top: 90px; width: 420px; opacity: .9; z-index: -1; }
+.p2-hero .blocks { position: absolute; right: -40px; top: 170px; width: 380px; opacity: .9; z-index: -1; }
 
 .sec { padding: 90px 0; border-top: 1px solid var(--line); }
 .sec-grid { display: grid; grid-template-columns: 300px 1fr; gap: 50px; }
